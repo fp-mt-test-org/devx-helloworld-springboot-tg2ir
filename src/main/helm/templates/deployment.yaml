@@ -1,0 +1,38 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app: devx-helloworld-springboot-tg2ir
+    backstage.io/kubernetes-id: devx-helloworld-springboot-tg2ir
+  name: devx-helloworld-springboot-tg2ir
+  namespace: '{{ .Values.config.namespace }}'
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: devx-helloworld-springboot-tg2ir
+  strategy: {}
+  imagePullSecrets:
+    - name: artifact-registry
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: devx-helloworld-springboot-tg2ir
+    spec:
+      containers:
+      - image: uswest2fpmt.jfrog.io/default-docker-virtual/vad1mo/hello-world-rest
+        imagePullPolicy: IfNotPresent
+        name: devx-helloworld-springboot-tg2ir
+        resources: {}
+        ports:
+          - containerPort: 5050 
+        readinessProbe:
+          httpGet:
+            path: /actuator/health
+            port: 5050
+          periodSeconds: 5
+      imagePullSecrets:
+        - name: artifact-registry
+status: {}

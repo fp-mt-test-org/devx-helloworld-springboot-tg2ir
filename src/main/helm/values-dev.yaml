@@ -1,0 +1,6 @@
+config:
+  host: devx-helloworld-springboot-tg2ir
+  namespace: devx-helloworld-springboot-tg2ir-service-dev
+  image:
+    name: vad1mo/hello-world-rest
+    tag: v0.0.1

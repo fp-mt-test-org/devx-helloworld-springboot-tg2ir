@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: Service
+metadata:
+  creationTimestamp: null
+  labels:
+    app: devx-helloworld-springboot-tg2ir
+    backstage.io/kubernetes-id: devx-helloworld-springboot-tg2ir
+  name: devx-helloworld-springboot-tg2ir
+  namespace: '{{ .Values.config.namespace }}'
+spec:
+  ports:
+  - name: 5050-5050
+    port: 5050
+    protocol: TCP
+    targetPort: 5050
+  selector:
+    app: devx-helloworld-springboot-tg2ir
